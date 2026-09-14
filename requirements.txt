@@ -1,0 +1,6 @@
+# Exact versions used to produce the results reported in the paper.
+# Newer minor versions should reproduce identically; numpy >= 2.0 is required
+# because the code uses np.trapezoid (renamed from np.trapz in numpy 2.0).
+numpy==2.4.4
+scipy==1.17.1
+scikit-image==0.26.0
