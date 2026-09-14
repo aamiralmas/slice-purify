@@ -1,0 +1,35 @@
+%% Rebuild the result figures without the manuscript.
+%%   pdflatex standalone.tex
+%% Produces one page per figure, using the coordinates in
+%% ../sim/results/pgfplots.tex — i.e. whatever the last experiment run wrote.
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amssymb,graphicx,tikz}
+\usepackage{pgfplots}\pgfplotsset{compat=1.18}
+\newcommand{\SP}{\textsc{Slice-Purify}}
+\newcommand{\DMC}{\textsc{DMC}}
+%% math macros the figure files borrow from the manuscript preamble
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prb}{\mathbb{P}}
+\newcommand{\Ind}{\mathbb{1}}
+\pgfplotsset{
+    sp/.style={color=blue,           mark=o,        thick, mark size=1.6},
+    b1/.style={color=red,            mark=square,   thick, mark size=1.6, dashed},
+    b2/.style={color=green!60!black, mark=triangle, thick, mark size=1.8, dash dot},
+    b3/.style={color=orange,         mark=diamond,  thick, mark size=1.8, densely dotted},
+    ref/.style={color=gray, thin, dashed, mark=none},
+    axstd/.style={
+        width=\columnwidth, height=5.4cm,
+        grid=major, grid style={dotted,gray!40},
+        legend style={font=\scriptsize, fill opacity=0.85,
+                      text opacity=1, draw=gray!50},
+        tick label style={font=\footnotesize},
+        label style={font=\small}}}
+\input{../sim/results/pgfplots.tex}
+%% cross-references the manuscript owns; stubbed so this compiles alone
+\newcommand{\stubref}[1]{\textbf{?}}
+\let\eqref\stubref \let\ref\stubref
+\begin{document}
+\input{fig_e1}\input{fig_e2}\input{fig_e3}\input{fig_e4}
+\input{fig_e5}\input{fig_e6}\input{fig_e7}\input{fig_e9}
+\end{document}

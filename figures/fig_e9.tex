@@ -1,0 +1,27 @@
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[axstd, width=0.86\columnwidth, height=6.0cm,
+    axis y line*=left,
+    xlabel={Trigger-band width $|\mathcal{B}|$},
+    ylabel={In-band ASR \;/\; fused $S$},
+    xmin=0.02, xmax=0.58, ymin=0, ymax=4.0,
+    legend pos=north west]
+\addplot[sp] coordinates {\Enineasr};   \addlegendentry{In-band ASR (left)}
+\addplot[b2] coordinates {\Eninefused}; \addlegendentry{Fused $S$ (left)}
+\addlegendimage{b1}                     \addlegendentry{Occupancy $p_{\mathrm{trg}}$ (right)}
+\end{axis}
+\begin{axis}[axstd, width=0.86\columnwidth, height=6.0cm,
+    axis y line*=right, axis x line=none,
+    ylabel={Occupancy $p_{\mathrm{trg}}$},
+    xmin=0.02, xmax=0.58, ymin=0, ymax=0.5]
+\addplot[b1] coordinates {\Enineexposure};
+\end{axis}
+\end{tikzpicture}
+\caption{Attacker stealth budget. Conditional on a frame falling in
+the trigger band, neither attack efficacy nor detectability depends on
+the band's width; what the width controls is occupancy, which scales
+the attacker's reachable volume and the defender's observation rate
+identically. Halving the band halves both.}
+\label{fig:e9}
+\end{figure}

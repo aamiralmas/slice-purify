@@ -1,0 +1,24 @@
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[axstd, width=0.93\columnwidth, height=6.0cm,
+    xlabel={Catalogue size $N_{a}$ (artefacts)},
+    ylabel={Verification time per round (ms)},
+    xmode=log, ymode=log,
+    xmin=8, xmax=1000, ymin=0.05, ymax=100,
+    legend pos=north west]
+\addplot[b1] coordinates {\Esevenexhaustive};
+    \addlegendentry{Exhaustive re-verification}
+\addplot[b2] coordinates {\Esevenpertenant};
+    \addlegendentry{Per-tenant independent}
+\addplot[sp] coordinates {\Esevenfused};
+    \addlegendentry{\SP{} fused (Alg.~\ref{alg:sp})}
+\end{axis}
+\end{tikzpicture}
+\caption{Measured wall-clock cost of one orchestrator verification
+round at eight co-tenants per artefact and $B=16$ gain bins. At
+$N_{a}=800$ the fused scheme is $22.5\times$ faster than per-tenant
+verification and $39.0\times$ faster than exhaustive re-verification,
+realising the factor-$B$ saving of \eqref{eq:corch}.}
+\label{fig:e7}
+\end{figure}

@@ -1,0 +1,33 @@
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[axstd, height=4.6cm,
+    xlabel={}, xticklabels={},
+    ylabel={Targeted ASR},
+    xmin=-0.03, xmax=1.03, ymin=-0.05, ymax=1.0,
+    xtick={0,0.2,0.4,0.6,0.8,1.0},
+    legend pos=north west]
+\addplot[b1] coordinates {\Etwoasrnodef}; \addlegendentry{Undefended}
+\addplot[sp] coordinates {\Etwoasrpur};   \addlegendentry{After \DMC{} purification}
+\end{axis}
+\begin{axis}[axstd, height=5.2cm, at={(0cm,-4.6cm)},
+    xlabel={Encoder-side injection fraction $\rho$},
+    ylabel={Response / benign level},
+    xmin=-0.03, xmax=1.03,
+    ymode=log, ymin=0.3, ymax=600,
+    xtick={0,0.2,0.4,0.6,0.8,1.0},
+    legend pos=south west]
+\addplot[sp] coordinates {\Etwodone};    \addlegendentry{$D_{1}$ residual}
+\addplot[b2] coordinates {\Etwodtwo};    \addlegendentry{$D_{2}$ profile divergence}
+\addplot[b1] coordinates {\Etwofused}; \addlegendentry{Fused $S$}
+\addplot[ref] coordinates {(0,1) (1,1)};
+\end{axis}
+\end{tikzpicture}
+\caption{The evasion--detectability frontier. Upper: purification
+neutralises the attack for $\rho\le 0.6$ and fails at $\rho=1$.
+Lower: the two detector responses move in opposite directions, so the
+adversary must expose itself to one of them. The grey line marks the
+benign level. Predicted optimal adversary:
+$\rho^{\star}\approx0.74$ by \eqref{eq:rhostar}.}
+\label{fig:e2}
+\end{figure}

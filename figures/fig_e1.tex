@@ -1,0 +1,32 @@
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[axstd, height=4.9cm,
+    xlabel={}, xticklabels={},
+    ylabel={Targeted ASR},
+    xmin=0, xmax=24, ymin=-0.03, ymax=0.58,
+    xtick={2,6,10,14,18,22},
+    legend pos=north west, legend columns=1]
+\addplot[b1] coordinates {\Eoneasrnone}; \addlegendentry{Undefended}
+\addplot[b3] coordinates {\Eoneasrpur};  \addlegendentry{Purify-only}
+\addplot[sp] coordinates {\Eoneasrfull}; \addlegendentry{\SP{}}
+\end{axis}
+\begin{axis}[axstd, height=4.9cm, at={(0cm,-4.4cm)},
+    xlabel={Receive SNR $\gamma$ (dB)},
+    ylabel={PSNR (dB)},
+    xmin=0, xmax=24, ymin=9, ymax=28,
+    xtick={2,6,10,14,18,22},
+    legend pos=north west, legend columns=1]
+\addplot[ref, mark=none] coordinates {\Eonepsnrbenign};
+    \addlegendentry{Benign link (no attack)}
+\addplot[sp] coordinates {\Eonepsnrpur};
+    \addlegendentry{\SP{} under attack, $\rho=0.7$}
+\end{axis}
+\end{tikzpicture}
+\caption{Attack efficacy and fidelity versus channel SNR at the
+adaptive operating point $\rho=0.7$. Upper: targeted attack success
+rate. Lower: reconstruction PSNR. Undefended ASR \emph{increases} with
+SNR, because a good channel delivers the attacker's semantic anchor as
+faithfully as it delivers the source.}
+\label{fig:e1}
+\end{figure}

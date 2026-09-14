@@ -1,0 +1,36 @@
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[axstd, height=4.6cm,
+    xlabel={Observation round $t$},
+    ylabel={Trust $\bar{\pi}_{a}$},
+    xmin=0, xmax=41, ymin=0, ymax=1.0,
+    legend pos=south west, legend columns=2]
+\addplot[sp, mark=none] coordinates {\Efivebenign};
+    \addlegendentry{Benign artefact}
+\addplot[b1, mark=none] coordinates {\Efivepoisoned};
+    \addlegendentry{Poisoned artefact}
+\addplot[ref] coordinates {(0,0.35) (41,0.35)};
+    \addlegendentry{$\pi_{\mathrm{th}}$}
+\end{axis}
+\node[font=\footnotesize] at (2.2cm,-0.35cm) {(a)};
+\begin{axis}[axstd, height=5.0cm, at={(0cm,-5.0cm)},
+    xlabel={Co-tenancy $T_{a}$ (slices sharing the artefact)},
+    ylabel={CUSUM delay (rounds)},
+    xmin=0, xmax=17, ymin=0, ymax=18,
+    xtick={1,2,4,8,16},
+    legend pos=north east]
+\addplot[sp] coordinates {\Efivedagentic}; \addlegendentry{Agentic probing}
+\addplot[b1] coordinates {\Efivedrandom};  \addlegendentry{Random probing}
+\addplot[b2] coordinates {\Efivedpassive}; \addlegendentry{Passive (no probes)}
+\end{axis}
+\node[font=\footnotesize] at (2.2cm,-5.35cm) {(b)};
+\end{tikzpicture}
+\caption{(a) Beta trust trajectories at $T_{a}=4$: separation is
+established within about five rounds. (b) Detection delay against
+co-tenancy at a benign average run length above $200$ rounds. Agentic
+probing is the \emph{worst} policy at $T_{a}=1$, where the probe
+budget displaces natural traffic before exploration pays for itself,
+and the best from $T_{a}=2$ onward.}
+\label{fig:e5}
+\end{figure}

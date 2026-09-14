@@ -1,0 +1,28 @@
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[axstd, width=0.86\columnwidth, height=6.0cm,
+    axis y line*=left,
+    xlabel={Purification depth $K$ (iterations)},
+    ylabel={Targeted ASR at $\rho=0.7$},
+    xmin=-0.4, xmax=12.4, ymin=-0.02, ymax=0.45,
+    xtick={0,1,2,3,4,6,8,12},
+    legend pos=north east]
+\addplot[sp] coordinates {\Ethreeasr};  \addlegendentry{ASR (left axis)}
+\addlegendimage{b1}                     \addlegendentry{Service time (right)}
+\addlegendimage{b2}                     \addlegendentry{$D_1$ separation (right)}
+\end{axis}
+\begin{axis}[axstd, width=0.86\columnwidth, height=6.0cm,
+    axis y line*=right, axis x line=none,
+    ylabel={ms \;/\; separation ($\times$)},
+    xmin=-0.4, xmax=12.4, ymin=0, ymax=25]
+\addplot[b1] coordinates {\Ethreems};
+\addplot[b2] coordinates {\Ethreesep};
+\end{axis}
+\end{tikzpicture}
+\caption{Purification depth trades concave security return against
+linear cost. Two iterations already remove $97\%$ of the recoverable
+displacement, consistent with the $(1-\eta_{c})^{K}$ decay of
+\eqref{eq:kstar}; cost grows at $1.79$\,ms per iteration.}
+\label{fig:e3}
+\end{figure}

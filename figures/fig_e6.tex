@@ -1,0 +1,24 @@
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[axstd, height=6.0cm,
+    xlabel={Offered load (\% of service capacity)},
+    ylabel={$\Prb(L > \tau_{\max})$},
+    xmin=5, xmax=95,
+    ymode=log, ymin=2e-5, ymax=2,
+    xtick={10,20,30,40,50,60,70,80,90},
+    legend pos=north west]
+\addplot[b1] coordinates {\Esixstatic}; \addlegendentry{Always-purify}
+\addplot[sp] coordinates {\Esixfull};   \addlegendentry{\SP{} (adaptive gate $q=0.31$)}
+\addplot[b2] coordinates {\Esixundef};  \addlegendentry{Undefended}
+\end{axis}
+\end{tikzpicture}
+\caption{Deadline-violation probability from a discrete-event
+queueing simulation driven by measured service times
+($1.21$\,ms decode, $8.06$\,ms purification at $K=4$,
+$\tau_{\max}=25$\,ms). Below $70\%$ load the undefended arm is
+strictly better---security costs tail latency. Above $80\%$ it
+collapses, because corrupted frames provoke retransmissions that
+compound the congestion causing them.}
+\label{fig:e6}
+\end{figure}
